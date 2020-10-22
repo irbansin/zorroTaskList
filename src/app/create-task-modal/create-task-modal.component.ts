@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InternalService } from '../internal.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GlobalService } from '../global.service';
+import { Users } from '../data.model';
 
 @Component({
   selector: 'app-create-task-modal',
@@ -11,6 +12,8 @@ import { GlobalService } from '../global.service';
 export class CreateTaskModalComponent {
 
   isVisible: boolean;
+  @Input() userList: Users[];
+  priority = ['high', 'medium', 'low'];
   validateForm!: FormGroup;
 
   constructor(
@@ -28,18 +31,19 @@ export class CreateTaskModalComponent {
       assigned_to: [null, []],
     });
   }
-
   handleOk(): void {
-    for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
+    if(this.validateForm.valid){
+      for (const i in this.validateForm.controls) {
+        this.validateForm.controls[i].markAsDirty();
+        this.validateForm.controls[i].updateValueAndValidity();
+      }
+      console.log(this.validateForm.value)
+      let postObject = this.validateForm.value;
+      this.globalService.createTask(postObject).subscribe(res => {
+        console.log(res);
+      })
+      this.internalService.createTaskModalVisible.next(false);
     }
-    console.log(this.validateForm.value)
-    let postObject = this.validateForm.value;
-    this.globalService.createTask(postObject).subscribe(res => {
-      console.log(res);
-    })
-    this.internalService.createTaskModalVisible.next(false);
   }
 
   handleCancel(): void {

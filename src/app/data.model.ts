@@ -2,7 +2,7 @@
 export interface TaskObject {
   message: string;
   due_date?: string;
-  priority?: number;
+  priority?: 1 | 2 | 3;
   assigned_to?: number;
 }
 export interface TaskUpdateObject extends TaskObject {

@@ -15,13 +15,17 @@
     <nz-form-item>
       <nz-form-label [nzSpan]="6" nzFor="priority">Priority</nz-form-label>
       <nz-form-control [nzSpan]="14">
-        <input nz-input formControlName="priority" type="dropdown" id="priority">
+        <nz-select nz-input  formControlName="priority" id="priority">
+          <nz-option *ngFor="let lvl of priority; let i = index" nzValue="{{i+1}}" nzLabel="{{lvl}}"></nz-option>
+        </nz-select>
       </nz-form-control>
     </nz-form-item >
     <nz-form-item>
       <nz-form-label [nzSpan]="6" nzFor="assignedTo">Assigned to</nz-form-label>
       <nz-form-control [nzSpan]="14">
-        <input nz-input formControlName="assigned_to" type="dropdown" id="assignedTo">
+        <nz-select nz-input  formControlName="assigned_to" id="assignedTo">
+          <nz-option *ngFor="let user of userList; let i = index" nzValue="{{i+1}}" nzLabel="{{user.name}}"></nz-option>
+        </nz-select>
       </nz-form-control>
     </nz-form-item >
   </form>

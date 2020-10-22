@@ -10,6 +10,8 @@ import { InternalService } from './internal.service';
 export class AppComponent {
   isCollapsed = false;
   createTaskModalStatus = false;
+  tasksList = [];
+  appUsersList = [];
 
   constructor(
     private globalService: GlobalService,
@@ -21,12 +23,13 @@ export class AppComponent {
   }
   initializeTasksList() {
     this.globalService.getTaskList().subscribe((res)=>{
-      console.log(res);
+      this.tasksList = res['tasks'];
     });
   }
   initializeUsersList() {
     this.globalService.getUserList().subscribe((res)=>{
-      console.log(res);
+      this.appUsersList = res['users'];
+      console.log(this.appUsersList);
     });
   }
   createTaskDialogToggle() {
