@@ -12,34 +12,27 @@ export class HomeComponent implements OnInit {
 
   constructor(private globalService: GlobalService) { }
   tasksList = [];
-  high = [
-    'Get to work',
-    'Pick up groceries',
-    'Go home',
-    'Fall asleep'
-  ];
-
-  medium = [
-    'Get up',
-    'Brush teeth',
-    'Take a shower',
-    'Check e-mail',
-    'Walk dog'
-  ];
-
-  low = [
-    'Play game',
-    'Make guns',
-    'Read about laws',
-    'think',
-    'Disturb your sibllings'
-  ];
+  high = [];
+  medium = [];
+  low = [];
   ngOnInit() {
     this.initializeTasksList()
   }
   initializeTasksList() {
     this.globalService.getTaskList().subscribe((res)=>{
       this.tasksList = res['tasks'];
+      this.tasksList.map(item => {
+        if(item.priority === '1') {
+          this.low.push(item);
+        }
+        if(item.priority === '2') {
+          this.medium.push(item);
+        }
+        if(item.priority === '3') {
+          this.high.push(item);
+        }
+        console.log(item)
+      });
     });
   }
 

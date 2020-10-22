@@ -13,7 +13,7 @@ export class CreateTaskModalComponent {
 
   isVisible: boolean;
   @Input() userList: Users[];
-  priority = ['high', 'medium', 'low'];
+  priority = ['low', 'medium', 'high'];
   validateForm!: FormGroup;
 
   constructor(

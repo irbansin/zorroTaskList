@@ -16,7 +16,7 @@
           [cdkDropListConnectedTo]="[mediumList, lowList]"
           class="zorroList"
           (cdkDropListDropped)="drop($event)">
-          <div class="zorroBox" *ngFor="let item of high" cdkDrag>{{item}}</div>
+          <div class="zorroBox" *ngFor="let item of high" cdkDrag>{{item['message']}}</div>
         </tr>
       </tbody>
     </nz-table>
@@ -36,7 +36,7 @@
           [cdkDropListConnectedTo]="[highList, lowList]"
           class="zorroList"
           (cdkDropListDropped)="drop($event)">
-          <div class="zorroBox" *ngFor="let item of medium" cdkDrag>{{item}}</div>
+          <div class="zorroBox" *ngFor="let item of medium" cdkDrag>{{item['message']}}</div>
         </tr>
       </tbody>
     </nz-table>
@@ -50,13 +50,13 @@
       </thead>
         <tbody cdkDropList (cdkDropListDropped)="drop($event)">
           <tr
-          cdkDropList
-          #lowList="cdkDropList"
-          [cdkDropListData]="low"
-          [cdkDropListConnectedTo]="[highList, mediumList]"
-          class="zorroList"
-          (cdkDropListDropped)="drop($event)">
-          <div class="zorroBox" *ngFor="let item of low" cdkDrag>{{item}}</div>
+            cdkDropList
+            #lowList="cdkDropList"
+            [cdkDropListData]="low"
+            [cdkDropListConnectedTo]="[highList, mediumList]"
+            class="zorroList"
+            (cdkDropListDropped)="drop($event)">
+          <div class="zorroBox" *ngFor="let item of low" cdkDrag>{{item['message']}}</div>
         </tr>
       </tbody>
     </nz-table>
