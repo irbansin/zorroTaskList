@@ -41,11 +41,11 @@ export class GlobalService {
     );
     return this.http.post<any[]>('https://devza.com/tests/tasks/update', postObject, {headers:header})
   }
-  deleteTask(postObject: DeleteTaskObject): Observable<any[]> {
+  deleteTask(id): Observable<any[]> {
     let header = new HttpHeaders().set(
       "AuthToken",
       "3UQLDSANnFDoIDMGMVjuanthCUcQopeW"
     );
-    return this.http.post<any[]>('https://devza.com/tests/tasks/delete', postObject, {headers:header})
+    return this.http.post<any[]>('https://devza.com/tests/tasks/delete', id, {headers:header})
   }
 }

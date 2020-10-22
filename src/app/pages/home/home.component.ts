@@ -51,4 +51,8 @@ export class HomeComponent implements OnInit {
         event.currentIndex)
     }
   }
+  deleteTask(id){
+    console.log(id)
+    this.globalService.deleteTask(id).subscribe(res => {console.log(res)})
+  }
 }

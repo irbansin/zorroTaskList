@@ -15,6 +15,15 @@
   display: block;
 }
 
+.danger {
+  background-color: #e53935;
+  border: #e53935 solid 1px;
+  &:hover {
+    background-color: #ef5350;
+    border-color: #ef5350 solid 1px;
+  }
+}
+
 .zorroBox {
   padding: 20px 10px;
   border-bottom: solid 1px #ccc;
