@@ -1,0 +1,64 @@
+<h1> Today's TaskList </h1>
+
+<div nz-row>
+  <div nz-col nzSpan="8">
+    <nz-table [nzData]="high" [nzFrontPagination]="false" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>High Priority</th>
+        </tr>
+      </thead>
+        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+          <tr
+          cdkDropList
+          #highList="cdkDropList"
+          [cdkDropListData]="high"
+          [cdkDropListConnectedTo]="[mediumList, lowList]"
+          class="zorroList"
+          (cdkDropListDropped)="drop($event)">
+          <div class="zorroBox" *ngFor="let item of high" cdkDrag>{{item}}</div>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div nz-col nzSpan="8">
+    <nz-table [nzData]="medium" [nzFrontPagination]="false" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>Medium Priority</th>
+        </tr>
+      </thead>
+        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+          <tr
+          cdkDropList
+          #mediumList="cdkDropList"
+          [cdkDropListData]="medium"
+          [cdkDropListConnectedTo]="[highList, lowList]"
+          class="zorroList"
+          (cdkDropListDropped)="drop($event)">
+          <div class="zorroBox" *ngFor="let item of medium" cdkDrag>{{item}}</div>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+  <div nz-col nzSpan="8">
+    <nz-table [nzData]="low" [nzFrontPagination]="false" [nzShowPagination]="false">
+      <thead>
+        <tr>
+          <th>Low Priority</th>
+        </tr>
+      </thead>
+        <tbody cdkDropList (cdkDropListDropped)="drop($event)">
+          <tr
+          cdkDropList
+          #lowList="cdkDropList"
+          [cdkDropListData]="low"
+          [cdkDropListConnectedTo]="[highList, mediumList]"
+          class="zorroList"
+          (cdkDropListDropped)="drop($event)">
+          <div class="zorroBox" *ngFor="let item of low" cdkDrag>{{item}}</div>
+        </tr>
+      </tbody>
+    </nz-table>
+  </div>
+</div>

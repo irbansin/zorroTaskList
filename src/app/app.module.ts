@@ -11,6 +11,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { CreateTaskModalComponent } from './create-task-modal/create-task-modal.component';
+import { HomeComponent } from './pages/home/home.component';
+import { NzPageHeaderModule } from 'ng-zorro-antd/page-header';
+import { DragDropModule } from '@angular/cdk/drag-drop'
 
 registerLocaleData(en);
 
@@ -18,15 +21,18 @@ registerLocaleData(en);
   declarations: [
     AppComponent,
     CreateTaskModalComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     IconsProviderModule,
     NgZorroAntdModule,
+    NzPageHeaderModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    DragDropModule,
     BrowserAnimationsModule
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],

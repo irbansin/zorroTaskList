@@ -10,7 +10,6 @@ import { InternalService } from './internal.service';
 export class AppComponent {
   isCollapsed = false;
   createTaskModalStatus = false;
-  tasksList = [];
   appUsersList = [];
 
   constructor(
@@ -18,13 +17,7 @@ export class AppComponent {
     private internalService: InternalService) {
   }
   ngOnInit() {
-    this.initializeTasksList();
     this.initializeUsersList();
-  }
-  initializeTasksList() {
-    this.globalService.getTaskList().subscribe((res)=>{
-      this.tasksList = res['tasks'];
-    });
   }
   initializeUsersList() {
     this.globalService.getUserList().subscribe((res)=>{
