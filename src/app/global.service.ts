@@ -27,6 +27,7 @@ export class GlobalService {
     return this.http.get<any[]>('https://devza.com/tests/tasks/listusers', {headers:header})
   }
   createTask(postObject): Observable<any[]> {
+    console.log(postObject);
     let header = new HttpHeaders().set(
       "AuthToken",
       "3UQLDSANnFDoIDMGMVjuanthCUcQopeW"

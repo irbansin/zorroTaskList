@@ -22,7 +22,6 @@ export class AppComponent {
   initializeUsersList() {
     this.globalService.getUserList().subscribe((res)=>{
       this.appUsersList = res['users'];
-      console.log(this.appUsersList);
     });
   }
   createTaskDialogToggle() {

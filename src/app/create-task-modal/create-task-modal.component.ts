@@ -37,7 +37,6 @@ export class CreateTaskModalComponent {
         this.validateForm.controls[i].markAsDirty();
         this.validateForm.controls[i].updateValueAndValidity();
       }
-      console.log(this.validateForm.value)
       let postObject = this.validateForm.value;
       this.globalService.createTask(postObject).subscribe(res => {
         console.log(res);
