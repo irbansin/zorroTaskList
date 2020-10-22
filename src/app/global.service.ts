@@ -31,20 +31,20 @@ export class GlobalService {
       "AuthToken",
       "3UQLDSANnFDoIDMGMVjuanthCUcQopeW"
     );
-    return this.http.post<any[]>('http://devza.com/tests/tasks/create', postObject, {headers:header})
+    return this.http.post<any[]>('https://devza.com/tests/tasks/create', postObject, {headers:header})
   }
   updateTask(postObject: TaskUpdateObject): Observable<any[]> {
     let header = new HttpHeaders().set(
       "AuthToken",
       "3UQLDSANnFDoIDMGMVjuanthCUcQopeW"
     );
-    return this.http.post<any[]>('http://devza.com/tests/tasks/update', postObject, {headers:header})
+    return this.http.post<any[]>('https://devza.com/tests/tasks/update', postObject, {headers:header})
   }
   deleteTask(postObject: DeleteTaskObject): Observable<any[]> {
     let header = new HttpHeaders().set(
       "AuthToken",
       "3UQLDSANnFDoIDMGMVjuanthCUcQopeW"
     );
-    return this.http.post<any[]>('http://devza.com/tests/tasks/delete', postObject, {headers:header})
+    return this.http.post<any[]>('https://devza.com/tests/tasks/delete', postObject, {headers:header})
   }
 }
