@@ -43,5 +43,9 @@ nz-content {
 }
 
 .site-page-header {
-  color: #fff;
+  display: flex;
+  justify-content: center;
+  h1 {
+    color: #fff;
+  }
 }
