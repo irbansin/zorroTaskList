@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { GlobalService } from 'src/app/global.service';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import { InternalService } from 'src/app/internal.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +10,12 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  subscriptions: Subscription = new Subscription();
 
-  constructor(private globalService: GlobalService) { }
+  constructor(private globalService: GlobalService,
+              private internalService: InternalService) { }
+  taskModalStatus = false;
+  taskModalType = 'Edit Task';
   tasksList = [];
   high = [];
   medium = [];
@@ -18,21 +24,21 @@ export class HomeComponent implements OnInit {
     this.initializeTasksList()
   }
   initializeTasksList() {
-    this.globalService.getTaskList().subscribe((res)=>{
-      this.tasksList = res['tasks'];
-      this.tasksList.map(item => {
-        if(item.priority === '1') {
-          this.low.push(item);
-        }
-        if(item.priority === '2') {
-          this.medium.push(item);
-        }
-        if(item.priority === '3') {
-          this.high.push(item);
-        }
-        console.log(item)
-      });
-    });
+    this.subscriptions.add(
+      this.globalService.getTaskList().subscribe((res)=>{
+        this.tasksList = res['tasks'];
+        this.tasksList.map(item => {
+          if(item.priority === '1') {
+            this.low.push(item);
+          }
+          if(item.priority === '2') {
+            this.medium.push(item);
+          }
+          if(item.priority === '3') {
+            this.high.push(item);
+          }
+        });
+      }));
   }
 
   drop(event: CdkDragDrop<string[]>) {
@@ -50,8 +56,15 @@ export class HomeComponent implements OnInit {
         event.currentIndex)
     }
   }
+  updateTask(id){
+    console.log(id)
+    this.internalService.taskModalVisibility.next(!this.taskModalStatus);
+    this.internalService.taskModalType.next(this.taskModalType);
+    this.internalService.taskId.next(id)
+  }
   deleteTask(id){
     console.log(id)
-    this.globalService.deleteTask(id).subscribe(res => {console.log(res)})
+    this.subscriptions.add(
+    this.globalService.deleteTask(id).subscribe(res => {console.log(res)}))
   }
 }

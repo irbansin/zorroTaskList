@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { GlobalService } from './global.service';
 import { InternalService } from './internal.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -9,8 +10,10 @@ import { InternalService } from './internal.service';
 })
 export class AppComponent {
   isCollapsed = false;
-  createTaskModalStatus = false;
+  taskModalStatus = false;
+  taskModalType = 'Create Task';
   appUsersList = [];
+  subscriptions: Subscription = new Subscription();
 
   constructor(
     private globalService: GlobalService,
@@ -20,11 +23,13 @@ export class AppComponent {
     this.initializeUsersList();
   }
   initializeUsersList() {
-    this.globalService.getUserList().subscribe((res)=>{
-      this.appUsersList = res['users'];
-    });
+    this.subscriptions.add(
+      this.globalService.getUserList().subscribe((res)=>{
+        this.appUsersList = res['users'];
+      }));
   }
   createTaskDialogToggle() {
-    this.internalService.createTaskModalVisible.next(!this.createTaskModalStatus);
+    this.internalService.taskModalVisibility.next(!this.taskModalStatus);
+    this.internalService.taskModalType.next(this.taskModalType);
   }
 }

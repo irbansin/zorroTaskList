@@ -1,4 +1,4 @@
-<nz-modal [(nzVisible)]="isVisible" nzTitle="Create Task" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+<nz-modal [(nzVisible)]="isVisible" nzTitle="{{title}}" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
   <form nz-form [formGroup]="validateForm" (ngSubmit)="handleOk()">
     <nz-form-item>
       <nz-form-label required [nzSpan]="6" nzFor="message">Task to do</nz-form-label>
