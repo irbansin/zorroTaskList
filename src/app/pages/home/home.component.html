@@ -16,6 +16,9 @@
           [cdkDropListConnectedTo]="[mediumList, lowList]"
           class="zorroList"
           (cdkDropListDropped)="drop($event)">
+          <div class="zorroBox" *ngIf="high.length === 0">
+            <nz-skeleton [nzActive]="true"></nz-skeleton>
+          </div>
           <div class="zorroBox" *ngFor="let item of high" cdkDrag>
             {{item['message']}}
             <div>
@@ -48,6 +51,9 @@
           [cdkDropListConnectedTo]="[highList, lowList]"
           class="zorroList"
           (cdkDropListDropped)="drop($event)">
+          <div class="zorroBox" *ngIf="high.length === 0">
+            <nz-skeleton [nzActive]="true"></nz-skeleton>
+          </div>
           <div class="zorroBox" *ngFor="let item of medium" cdkDrag>
             {{item['message']}}
             <div>
@@ -80,6 +86,9 @@
             [cdkDropListConnectedTo]="[highList, mediumList]"
             class="zorroList"
             (cdkDropListDropped)="drop($event)">
+            <div class="zorroBox" *ngIf="high.length === 0">
+              <nz-skeleton [nzActive]="true"></nz-skeleton>
+            </div>
           <div class="zorroBox" *ngFor="let item of low" cdkDrag>
             {{item['message']}}
             <div>
