@@ -45,11 +45,12 @@ export class CreateTaskModalComponent implements OnInit, OnDestroy {
   }
   handleOk(): void {
     if(this.validateForm.valid && this.title === 'Create Task'){
+      let postObject = new FormData();
       for (const i in this.validateForm.controls) {
         this.validateForm.controls[i].markAsDirty();
         this.validateForm.controls[i].updateValueAndValidity();
+        postObject.append(i, this.validateForm.controls[i].value)
       }
-      let postObject = this.validateForm.value;
       this.subscriptions.add(this.globalService.createTask(postObject).subscribe(res => {
         console.log(res);
       }))
