@@ -10,6 +10,4 @@ export class InternalService {
   taskModalType = new Subject<string>();
   taskId = new Subject<number>();
   constructor() { }
-
-
 }

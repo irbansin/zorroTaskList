@@ -10,14 +10,11 @@ import { Subscription } from 'rxjs';
 })
 export class AppComponent {
   isCollapsed = false;
-  taskModalStatus = false;
-  taskModalType = 'Create Task';
   appUsersList = [];
   subscriptions: Subscription = new Subscription();
 
   constructor(
-    private globalService: GlobalService,
-    private internalService: InternalService) {
+    private globalService: GlobalService) {
   }
   ngOnInit() {
     this.initializeUsersList();
@@ -27,9 +24,5 @@ export class AppComponent {
       this.globalService.getUserList().subscribe((res)=>{
         this.appUsersList = res['users'];
       }));
-  }
-  createTaskDialogToggle() {
-    this.internalService.taskModalVisibility.next(!this.taskModalStatus);
-    this.internalService.taskModalType.next(this.taskModalType);
   }
 }

@@ -8,7 +8,7 @@
         <router-outlet></router-outlet>
       </div>
       <app-create-task-modal [userList]="appUsersList"></app-create-task-modal>
-      <button nz-button nzType="primary" nzShape="circle" nzSize='large' (click)="createTaskDialogToggle()"><i nz-icon nzType="file-add"></i></button>
+      <app-task-modal-button></app-task-modal-button>
     </nz-content>
   </nz-layout>
 </nz-layout>
