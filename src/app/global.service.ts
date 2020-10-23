@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/internal/Observable';
-import { TaskObject, TaskUpdateObject, DeleteTaskObject, Users } from './data.model';
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +11,14 @@ export class GlobalService {
   constructor(private http: HttpClient) {
   }
 
-  getTaskList(): Observable<TaskObject[]> {
+  getTaskList(): Observable<any[]> {
     let header = new HttpHeaders().set(
       "AuthToken",
       "3UQLDSANnFDoIDMGMVjuanthCUcQopeW"
     );
     return this.http.get<any[]>('https://devza.com/tests/tasks/list', {headers:header})
   }
-  getUserList(): Observable<Users[]> {
+  getUserList(): Observable<any[]> {
     let header = new HttpHeaders().set(
       "AuthToken",
       "3UQLDSANnFDoIDMGMVjuanthCUcQopeW"
@@ -34,7 +33,7 @@ export class GlobalService {
     );
     return this.http.post<any[]>('https://devza.com/tests/tasks/create', postObject, {headers:header})
   }
-  updateTask(postObject: TaskUpdateObject): Observable<any[]> {
+  updateTask(postObject): Observable<any[]> {
     let header = new HttpHeaders().set(
       "AuthToken",
       "3UQLDSANnFDoIDMGMVjuanthCUcQopeW"

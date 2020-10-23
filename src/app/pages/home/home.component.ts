@@ -9,7 +9,6 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 })
 export class HomeComponent implements OnInit {
 
-
   constructor(private globalService: GlobalService) { }
   tasksList = [];
   high = [];
