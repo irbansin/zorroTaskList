@@ -15,15 +15,6 @@
   display: block;
 }
 
-.danger {
-  background-color: #e53935;
-  border: #e53935 solid 1px;
-  &:hover {
-    background-color: #ef5350;
-    border-color: #ef5350 solid 1px;
-  }
-}
-
 .zorroBox {
   padding: 20px 20px;
   border-bottom: solid 1px #ccc;
@@ -60,11 +51,4 @@
 
 .zorroList.cdk-drop-list-dragging .zorroBox:not(.cdk-drag-placeholder) {
   transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-[nz-button] {
-  margin-right: 8px;
-}
-
-nz-button-group [nz-button] {
-  margin-right: 0;
 }

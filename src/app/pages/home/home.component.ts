@@ -12,10 +12,8 @@ import { Subscription } from 'rxjs';
 export class HomeComponent implements OnInit {
   subscriptions: Subscription = new Subscription();
 
-  constructor(private globalService: GlobalService,
-              private internalService: InternalService) { }
-  taskModalStatus = false;
-  taskModalType = 'Edit Task';
+  constructor(private globalService: GlobalService) { }
+
   tasksList = [];
   high = [];
   medium = [];
@@ -55,16 +53,5 @@ export class HomeComponent implements OnInit {
         event.previousIndex,
         event.currentIndex)
     }
-  }
-  updateTask(id){
-    console.log(id)
-    this.internalService.taskModalVisibility.next(!this.taskModalStatus);
-    this.internalService.taskModalType.next(this.taskModalType);
-    this.internalService.taskId.next(id)
-  }
-  deleteTask(id){
-    console.log(id)
-    this.subscriptions.add(
-    this.globalService.deleteTask(id).subscribe(res => {console.log(res)}))
   }
 }

@@ -13,7 +13,8 @@ import en from '@angular/common/locales/en';
 import { CreateTaskModalComponent } from './create-task-modal/create-task-modal.component';
 import { HomeComponent } from './pages/home/home.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
-import { TaskModalButtonComponent } from './task-modal-button/task-modal-button.component'
+import { TaskModalButtonComponent } from './task-modal-button/task-modal-button.component';
+import { TaskButtonGroupComponent } from './task-button-group/task-button-group.component'
 
 registerLocaleData(en);
 
@@ -23,6 +24,7 @@ registerLocaleData(en);
     CreateTaskModalComponent,
     HomeComponent,
     TaskModalButtonComponent,
+    TaskButtonGroupComponent,
   ],
   imports: [
     BrowserModule,

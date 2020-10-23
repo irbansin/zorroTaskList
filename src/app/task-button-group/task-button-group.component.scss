@@ -1,0 +1,14 @@
+nz-button-group [nz-button] {
+  margin-right: 0;
+}
+[nz-button] {
+  margin-right: 8px;
+}
+.danger {
+  background-color: #e53935;
+  border: #e53935 solid 1px;
+  &:hover {
+    background-color: #ef5350;
+    border-color: #ef5350 solid 1px;
+  }
+}
